@@ -7,6 +7,7 @@ module.exports = {
     },
 // criação de posts
     async store(req, res) {
-
+        console.log(req.body)
+        return res.json({ok: true})
     }
 }
