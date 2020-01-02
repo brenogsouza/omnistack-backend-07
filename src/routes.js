@@ -1,8 +1,10 @@
 const express = require('express')
 const multer = require('multer')
 
+const uploadConfig = require('./configs/upload')
+
 const routes = new express.Router()
-const upload = multer()
+const upload = multer(uploadConfig)
 
 // CONTROLLERS
 const PostController = require('./controllers/PostController')
