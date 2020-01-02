@@ -1,9 +1,11 @@
 const express = require('express')
-
 const routes = new express.Router()
 
-routes.get('/', (req, res) => {
-    return res.send('ola mundo')
-})
+
+// CONTROLLERS
+const PostController = require('./controllers/PostController')
+
+// ROTAS POST
+routes.post('/posts', PostController.store)
 
 module.exports = routes
