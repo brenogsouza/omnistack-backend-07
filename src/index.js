@@ -21,6 +21,12 @@ mongoose
     console.log(Error, err.message);
   });
 
+app.use((req, res, next) => {
+  req.io = io;
+
+  next();
+})
+
 app.use(cors())
 
 app.use(
