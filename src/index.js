@@ -5,6 +5,9 @@ const cors = require('cors')
 
 const app = express();
 
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+
 mongoose
   .connect(
     "mongodb+srv://instaclone:12345@meubanco-tgxc0.mongodb.net/test?retryWrites=true&w=majority",
@@ -27,4 +30,4 @@ app.use(
 
 app.use(require("./routes"));
 
-app.listen(3333);
+server.listen(3333);
