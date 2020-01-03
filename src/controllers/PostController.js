@@ -14,13 +14,17 @@ module.exports = {
   // criação de posts
   async store(req, res) {
     const { author, place, description, hashtags } = req.body;
-    const { filename: image } = req.file;
+		const { filename: image } = req.file;
+		
+		// definindo formato da image
+		const [name] =  image.split('.')
+		const filename = `${name}.jpg`
 
     // tratando o redimensionamento da imagem
     await sharp(req.file.path)
       .resize(500)
       .jpeg({ quality: 70 })
-      .toFile(path.resolve(req.file.destination, "resized", image));
+      .toFile(path.resolve(req.file.destination, "resized", filename));
 		
 		// excluir imagem atual sem tratramento
 		fs.unlinkSync(req.file.path)
@@ -30,7 +34,7 @@ module.exports = {
       place,
       description,
       hashtags,
-      image
+      image: filename
     });
     return res.json(post);
   }
