@@ -21,6 +21,9 @@ module.exports = {
       .resize(500)
       .jpeg({ quality: 70 })
       .toFile(path.resolve(req.file.destination, "resized", image));
+		
+		// excluir imagem atual sem tratramento
+		fs.unlinkSync(req.file.path)
 
     const post = await Post.create({
       author,
