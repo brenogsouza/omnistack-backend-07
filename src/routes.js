@@ -12,4 +12,7 @@ const PostController = require('./controllers/PostController')
 // ROTAS POST
 routes.post('/posts', upload.single('image'), PostController.store)
 
+// ROTAS GET
+routes.get('/posts', PostController.index)
+
 module.exports = routes
