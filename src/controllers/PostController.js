@@ -15,8 +15,6 @@ module.exports = {
 			hashtags,
 			image
 		});
-
-        console.log(post,'oq veio')
 		return res.json(post);
 	}
 };
